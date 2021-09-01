@@ -14,11 +14,11 @@ jobs:
 
       # Setup go and stringer
       - name: Set up Go
-        uses: actions/setup-go@v2
-      - run: echo "::set-env name=PATH::$(go env GOPATH)/bin:$PATH"
-      - run: go get -v golang.org/x/tools/cmd/stringer
+      - uses: actions/setup-go@v2
         with:
           go-version: 1.17
+      - run: echo "::set-env name=PATH::$(go env GOPATH)/bin:$PATH"
+      - run: go get -v golang.org/x/tools/cmd/stringer
 
       - name: Generate
         run: go generate -v ./...
